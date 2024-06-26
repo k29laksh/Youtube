@@ -1,0 +1,111 @@
+/* Drawer sidebar */
+
+.container_DrawerLeftSidebar {
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  z-index: 500;
+  top: 3.5rem;
+
+}
+
+.container2_DrawerLeftSidebar {
+  overflow-y: auto;
+  background-color: rgb(25, 24, 24);
+  height: calc(100vh - 3.4rem);
+  width: 12rem;
+  overflow-y: auto;
+  padding: 0 1rem;
+
+
+}
+
+.Drawer_leftsidebar,
+.libraryBtn_drawerleftsidebar {
+  padding-top: 0.5rem;
+  border-bottom: 1px rgb(98, 93, 93) solid;
+
+}
+
+.drawer_icon_sidebar_div {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.848);
+  text-decoration: none;
+  display: flex;
+  padding: 0.5rem 0;
+  margin-bottom: 0.3rem;
+}
+
+.drawer_icon_sidebar_div p {
+  display: flex;
+  align-items: center;
+
+  margin: 0;
+
+}
+
+.drawer_icon_sidebar_div:hover,
+.drawer_icon_sidebar_div.active {
+  color: aliceblue;
+  background-color: rgba(68, 68, 68, 0.663);
+  border-radius: 7px;
+}
+
+.drawer_text_sidebar_icon {
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: white;
+}
+
+
+
+
+.subcriptions_lsdbar p {
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 10px;
+
+}
+
+.chanel_lsdbar {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+
+}
+
+.subcriptions_lsdbar {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.subcribe_channels {
+  display: flex;
+  flex-direction: column;
+}
+
+.chanel_lsdbar:hover {
+  background-color: rgba(128, 128, 128, 0.221);
+  border-radius: 0.5rem;
+
+}
+
+.channel_profile_drawer {
+  border: 1px solid;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  font-size: 0.9rem;
+  align-items: center;
+  width: 0.9rem;
+  height: 0.9rem;
+  padding: 0.3rem;
+  border-radius: 100%;
+  margin: 10px;
+}
+.broadLiftSidebar_cont3 {
+  /* height: calc(100vh - 3.4rem); */
+  background-color: rgba(0, 0, 0, 0.5);
+  flex-grow: 1;
+}

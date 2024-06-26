@@ -1,0 +1,50 @@
+.container_pages {
+    display: flex;
+    background-color: #0F0F0F;
+
+}
+
+.container_pages2 {
+    width: calc(100vw - 5rem);
+    margin-left: 5.5rem;
+
+    height: calc(100vh - 3.5rem);
+    overflow-y: auto;
+    margin-top: 3.5rem;
+
+
+}
+
+.container_home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.navigation_Home {
+    color: white;
+    position: sticky;
+
+    display: flex;
+    overflow-x: auto;
+    top: 0;
+    background-color: #0F0F0F;
+    width: 100%;
+}
+
+.btn_home_nav {
+    background-color: rgb(46, 46, 46);
+    margin: 0.5rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+
+}
+
+.btn_home_nav.active {
+    background-color: white;
+    color: black;
+}

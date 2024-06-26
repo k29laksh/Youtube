@@ -1,0 +1,37 @@
+.Container_SearchList {
+    background-color: rgb(34,34,34);
+    
+    /* flex-grow: 1; */
+    width: 83.3%;
+    top: 2.7rem;
+    height: fit-content;
+    z-index: 500;
+    position: absolute;
+    border-radius: 0.8rem;
+    overflow: hidden;
+
+  }
+  
+  .title_item {
+    margin: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+
+
+  }
+  .title_item:hover {
+    background-color: rgba(57, 57, 57, 0.752);
+  }
+  .search_list_icon{
+    margin: auto 0.4rem;
+  }
+  
+  @media (max-width:1100px){
+    .Container_SearchList {
+      width: 20rem;
+    }
+  
+  }

@@ -1,0 +1,67 @@
+.btns_cont_videoPage
+{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn_threedot_videoPage{
+    margin: auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+    background-color: #7a797930;
+    border-radius: 100%;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.btn_videoPage{
+    margin: auto 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    background-color: #7a797930;
+    border-radius: 10rem;
+    padding: 0 1.3rem;
+    height: 2.5rem;
+}
+
+.like_videoPage{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+}
+.dislike_videoPage{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+
+}
+
+.btns_vid{
+    color: rgb(225, 216, 216);
+
+}
+
+.btn_like_videoPage{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #7a797930;
+    border-radius: 10rem;
+    padding: 0 1.3rem;
+    height: 2.5rem;
+}
+
+.like_line{
+    width: 0.7px;
+    height: 1.6rem;
+    background: rgb(89, 87, 87);
+}
