@@ -1,12 +1,13 @@
-.btns_cont_videoPage
-{
+/* Buttons.css */
+
+.btns_cont_videoPage {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     gap: 8px;
-}
-
-.btn_threedot_videoPage{
+  }
+  
+  .btn_threedot_videoPage {
     margin: auto 0;
     display: flex;
     align-items: center;
@@ -17,9 +18,9 @@
     border-radius: 100%;
     height: 2.5rem;
     width: 2.5rem;
-}
-
-.btn_videoPage{
+  }
+  
+  .btn_videoPage {
     margin: auto 0;
     display: flex;
     align-items: center;
@@ -29,28 +30,27 @@
     border-radius: 10rem;
     padding: 0 1.3rem;
     height: 2.5rem;
-}
-
-.like_videoPage{
+  }
+  
+  .like_videoPage {
     display: flex;
     align-items: center;
     gap: 2px;
     cursor: pointer;
-}
-.dislike_videoPage{
+  }
+  
+  .dislike_videoPage {
     display: flex;
     align-items: center;
     gap: 4px;
     cursor: pointer;
-
-}
-
-.btns_vid{
+  }
+  
+  .btns_vid {
     color: rgb(225, 216, 216);
-
-}
-
-.btn_like_videoPage{
+  }
+  
+  .btn_like_videoPage {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -58,10 +58,77 @@
     border-radius: 10rem;
     padding: 0 1.3rem;
     height: 2.5rem;
-}
-
-.like_line{
+  }
+  
+  .like_line {
     width: 0.7px;
     height: 1.6rem;
     background: rgb(89, 87, 87);
-}
+  }
+  
+  @media (max-width: 768px) {
+    .btns_cont_videoPage {
+        gap: 0px;
+      }
+      .btn_name{
+          display:none;
+      }
+    
+      .btn_threedot_videoPage {
+        height: 1.5rem;
+        width: 1.5rem;
+        background-color: transparent;
+  
+      }
+    
+      .btn_videoPage {
+        padding: 0 0.5rem;
+        height: 1.5rem;
+        background-color: transparent;
+      }
+    
+      .btn_like_videoPage {
+        padding: 0 0.8rem;
+        height: 1.5rem;
+        background-color: transparent;
+  
+      }
+    
+      .like_line {
+        height: 1.2rem;
+      }
+  }
+  
+  @media (max-width: 480px) {
+    .btns_cont_videoPage {
+      gap: 0px;
+    }
+    .btn_name{
+        display:none;
+    }
+  
+    .btn_threedot_videoPage {
+      height: 1.5rem;
+      width: 1.5rem;
+      background-color: transparent;
+
+    }
+  
+    .btn_videoPage {
+      padding: 0 0.4rem;
+      height: 1.5rem;
+      background-color: transparent;
+    }
+  
+    .btn_like_videoPage {
+      padding: 0 0.8rem;
+      height: 1.5rem;
+      background-color: transparent;
+
+    }
+  
+    .like_line {
+      height: 1.2rem;
+    }
+  }
+  

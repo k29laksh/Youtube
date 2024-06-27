@@ -49,12 +49,12 @@ const LikeWatchLaterSaveBtns = () => {
 
       <div className="btn_videoPage">
         <PiShareFatLight size={22} />
-        <p>Share</p>
+        <p className="btn_name">Share</p>
       </div>
 
       <div className="btn_videoPage">
         <FaHeartCirclePlus size={22} />
-        <p>Thanks</p>
+        <p className="btn_name">Thanks</p>
       </div>
 
       <div className="btn_videoPage">
@@ -62,12 +62,12 @@ const LikeWatchLaterSaveBtns = () => {
           {saveVideo ? (
             <>
               <MdOutlinePlaylistAdd size={28} className="btns_vid" />
-              <p>Save</p>
+              <p className="btn_name">Save</p>
             </>
           ) : (
             <>
               <MdOutlinePlaylistAddCheck size={28} className="btns_vid" />
-              <p>Saved</p>
+              <p className="btn_name">Saved</p>
             </>
           )}
         </div>

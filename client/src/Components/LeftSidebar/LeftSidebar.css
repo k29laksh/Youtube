@@ -48,3 +48,9 @@
 .icon_sidebar {
   margin: auto;
 }
+
+@media (max-width: 768px) {
+  .container_sidebar {
+display: none;
+  }
+}

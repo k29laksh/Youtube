@@ -1,37 +1,62 @@
+/* SearchList.css */
 .Container_SearchList {
-    background-color: rgb(34,34,34);
-    
-    /* flex-grow: 1; */
-    width: 83.3%;
-    top: 2.7rem;
-    height: fit-content;
-    z-index: 500;
-    position: absolute;
-    border-radius: 0.8rem;
-    overflow: hidden;
+  background-color: rgb(34,34,34);
+  width: 83.3%;
+  top: 2.7rem;
+  height: fit-content;
+  z-index: 500;
+  position: absolute;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
 
+.title_item {
+  margin: 0;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.title_item:hover {
+  background-color: rgba(57, 57, 57, 0.752);
+}
+
+.search_list_icon {
+  margin: auto 0.4rem;
+}
+
+/* @media (max-width: 1100px) {
+  .Container_SearchList {
+    width: 20rem;
   }
-  
+}
+
+@media (max-width: 768px) {
+  .Container_SearchList {
+    width: 15rem;
+  }
+
   .title_item {
-    margin: 0;
-    padding: 0.5rem;
-    cursor: pointer;
-    color: white;
-    display: flex;
-    align-items: center;
+    font-size: 0.9rem;
+  }
 
+  .search_list_icon {
+    margin: auto 0.3rem;
+  }
+}
 
+@media (max-width: 480px) {
+  .Container_SearchList {
+    width: 100%;
   }
-  .title_item:hover {
-    background-color: rgba(57, 57, 57, 0.752);
+
+  .title_item {
+    font-size: 0.8rem;
   }
-  .search_list_icon{
-    margin: auto 0.4rem;
+
+  .search_list_icon {
+    margin: auto 0.2rem;
   }
-  
-  @media (max-width:1100px){
-    .Container_SearchList {
-      width: 20rem;
-    }
-  
-  }
+} */

@@ -1,19 +1,46 @@
+/* Responsive CSS for .container_pages and .Container_ShowVideoGrid */
+
+/* Base Styles */
 .container_pages {
     display: flex;
     background-color: #0F0F0F;
-
-}
-
-.container_pages2 {
+  }
+  
+  .container_pages2 {
     width: calc(100vw - 5rem);
     margin-left: 5.5rem;
-
     height: calc(100vh - 3.5rem);
     overflow-y: auto;
     margin-top: 3.5rem;
+  }
+  
 
-
-}
+  
+  /* Tablet view */
+  @media (max-width: 768px) {
+    .container_pages2 {
+      width: calc(100vw - 3rem);
+      margin-left: 3.5rem;
+    }
+  
+    
+  }
+  
+  /* Mobile view */
+  @media (max-width: 480px) {
+    .container_pages {
+      flex-direction: column;
+    }
+  
+    .container_pages2 {
+      width: 100vw;
+      margin-left: 0;
+      margin-top: 3.5rem;
+    }
+  
+  
+  }
+  
 
 .container_home {
     display: flex;
@@ -48,3 +75,14 @@
     background-color: white;
     color: black;
 }
+
+/* @media (max-width: 768px) {
+    .container_pages2 {
+  margin: 1rem 1rem;
+    }
+
+    .container_home{
+ display: flex;
+ flex-wrap: w;
+    }
+  } */

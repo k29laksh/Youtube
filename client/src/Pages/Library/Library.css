@@ -1,0 +1,28 @@
+.Container_ShowVideoGrid2 {
+    display: flex;
+
+}
+
+.container_videoList_LibraryPage {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+
+}
+
+.libray_section_container {
+    padding-bottom: 2rem;
+}
+
+.library_name_icon {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px;
+    padding-top: 3rem;
+}
+
+.library_name {
+    font-size: 1.2rem;
+}

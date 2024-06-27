@@ -1,3 +1,4 @@
+/* Navbar.css */
 body {
   font-family: "Roboto", sans-serif;
 }
@@ -17,8 +18,6 @@ body {
 .Burger_Logo_Navbar {
   display: flex;
   align-items: center;
-
-
 }
 
 .burger {
@@ -40,7 +39,6 @@ body {
   width: 1.2rem;
   height: 0.1rem;
   background-color: rgb(255, 255, 255);
-
 }
 
 .burger-item {
@@ -64,16 +62,9 @@ body {
   color: white;
   font-weight: bold;
   font-size: 1.2rem;
-
 }
 
-.video_icon {
-  color: white;
-  margin: auto 0.5rem;
-  cursor: pointer;
-
-}
-
+.video_icon,
 .bell_icon {
   color: white;
   margin: auto 0.5rem;
@@ -81,12 +72,9 @@ body {
 }
 
 .box_apps {
-  /* border: 1px solid white; */
   width: 25px;
   margin: auto 0.7rem;
-
   height: 25px;
-  grid-row: 3;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -143,3 +131,35 @@ body {
   font-weight: bolder;
   cursor: pointer;
 }
+
+/* @media (max-width: 768px) {
+  .burger {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo_title_navbar {
+    font-size: 1rem;
+  }
+
+  .video_icon,
+  .bell_icon,
+  .Auth_Btn {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .Container_Navbar {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .burger {
+    margin: 0.2rem 0;
+  }
+
+  .logo_title_navbar {
+    font-size: 0.9rem;
+  }
+} */

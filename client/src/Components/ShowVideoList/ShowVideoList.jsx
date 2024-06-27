@@ -1,16 +1,11 @@
-import React from "react";
-import WHL from "../../Components/WHL/WHL";
-
+import React from 'react'
 import vid1 from "../../Components/Video/sample.mp4";
 import vid2 from "../../Components/Video/sample2.mp4";
 import vid3 from "../../Components/Video/sample3.mp4";
 import vid4 from "../../Components/Video/sample4.mp4";
-
-
-
-
-function WatchLater() {
-  const watchLater = [
+import ShowVideo from '../ShowVideo/ShowVideo';
+const ShowVideoList = ({videoId}) => {
+  const vids = [
     {
       _id: 1,
       video_src: vid1,
@@ -87,9 +82,19 @@ function WatchLater() {
     },
   ];
   return (
-            <WHL page={"Watch later"} videoList={watchLater} />
-    
-  );
+    <div className='Container_ShowVideoGrid2 container_library_list2'>
+    {
+        vids?.filter(q=>q._id === videoId).map(vi=>{
+            return(
+                <div key={vi._id} className="video_box_app">
+          <ShowVideo vid={vi}/>
+                </div>
+            )
+        })
+    }
+  
+</div>
+  )
 }
 
-export default WatchLater;
+export default ShowVideoList
