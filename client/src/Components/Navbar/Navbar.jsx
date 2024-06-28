@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import logo from "./youtube.svg";
 import { Link } from "react-router-dom";
@@ -7,26 +7,26 @@ import SearchBar from "./SearchBar/SearchBar";
 import { RiVideoAddLine } from "react-icons/ri";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { PiUserCircleLight } from "react-icons/pi";
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/auth";
+import Auth from "../../Pages/Auth/Auth";
 // import { GoogleLogin } from "react-google-login";
 // import { gapi } from "gapi-script";
 
+const Navbar = ({ wdtToggle,setEditCreateChannelBtn }) => {
+  // const currentUser = useSelector((state) => state.currentUserReducer);
+  // console.log(currentUser);
 
+  const [AuthBtn, setAuthBtn] = useState(false);
 
-const Navbar = ({wdtToggle}) => {
-  const currentUser =useSelector(state=>state.currentUserReducer)
-  console.log(currentUser)
+  const currentUser = {
+    result: {
+      email: "lyz@mail.com",
+      joinedOn: "2222-07-15T09:57:23.489Z",
+    },
+  };
 
-  
-  // const currentUser = {
-  //     result: {
-  //       email: "lyz@mail.com",
-  //       joinedOn: "2222-07-15T09:57:23.489Z",
-  //     },
-  //   };
-
-  const dispatch= useDispatch()
+  const dispatch = useDispatch();
 
   // const onSucess= (response)=>{
   //   const Email= response?.profileObj.email || "zdead0505@gmail.com";
@@ -44,11 +44,11 @@ const Navbar = ({wdtToggle}) => {
   //   gapi.load("client:auth2", start);
   // }, []);
 
-    const onSuccess= ()=>{
-    const Email= "zdead0505@gmail.com";
+  const onSuccess = () => {
+    const Email = "zdead0505@gmail.com";
     console.log(Email);
-    dispatch(login({email:Email}))
-  }
+    dispatch(login({ email: Email }));
+  };
 
   // const onSuccess = (response) => {
   //   const Email = response?.profileObj.email;
@@ -61,41 +61,43 @@ const Navbar = ({wdtToggle}) => {
   //   console.log("FAILED", response);
   // };
 
-
   return (
-    <div className="Container_Navbar">
-      <div className="Burger_Logo_Navbar">
-        <div className="burger" onClick={() => wdtToggle()}>
-          <RxHamburgerMenu className="burger-item" />
+    <>
+      <div className="Container_Navbar">
+        <div className="Burger_Logo_Navbar">
+          <div className="burger" onClick={() => wdtToggle()}>
+            <RxHamburgerMenu className="burger-item" />
+          </div>
+          <Link to="/" className="logo_div_Navbar">
+            <img
+              className="logo_div_Navbar_item"
+              src={logo}
+              width={40}
+              alt=""
+            />
+            <p className="logo_title_navbar">YouTube</p>
+          </Link>
         </div>
-        <Link to='/' className="logo_div_Navbar">
-          <img className="logo_div_Navbar_item" src={logo} width={40} alt="" />
-          <p className="logo_title_navbar">YouTube</p>
-        </Link>
-      </div>
 
-      <SearchBar />
+        <SearchBar />
 
-      <RiVideoAddLine size={25} className="video_icon" />
-      <div className="box_apps">
-        <p className="box_app"></p>
-        <p className="box_app"></p>
-        <p className="box_app"></p>
-        <p className="box_app"></p>
-        <p className="box_app"></p>
-        <p className="box_app"></p>
-        <p className="box_app"></p>
-        <p className="box_app"></p>
-        <p className="box_app"></p>
-      </div>
-      <IoMdNotificationsOutline size={25} className="bell_icon" />
+        <RiVideoAddLine size={25} className="video_icon" />
+        <div className="box_apps">
+          <p className="box_app"></p>
+          <p className="box_app"></p>
+          <p className="box_app"></p>
+          <p className="box_app"></p>
+          <p className="box_app"></p>
+          <p className="box_app"></p>
+          <p className="box_app"></p>
+          <p className="box_app"></p>
+          <p className="box_app"></p>
+        </div>
+        <IoMdNotificationsOutline size={25} className="bell_icon" />
 
-      <div className="Auth_Conatiner_navbar">
-        {currentUser ? (
-              <div
-              className="Chanel_logo_App"
-             
-            >
+        <div className="Auth_Conatiner_navbar">
+          {currentUser ? (
+            <div className="Chanel_logo_App" onClick={() => setAuthBtn(true)}>
               <p className="fstChar_logo_App">
                 {currentUser?.result.name ? (
                   <>{currentUser?.result.name.charAt(0).toUpperCase()}</>
@@ -104,32 +106,32 @@ const Navbar = ({wdtToggle}) => {
                 )}
               </p>
             </div>
-        ) : (
+          ) : (
+            // <GoogleLogin
+            // clientId={
+            //   "756719838452-cn65r0g4adi05jnqtff6csbscgv5urfv.apps.googleusercontent.com"
+            // }
+            // onSuccess={onSuccess}
+            // onFailure={onFailure}
+            // render={(renderProps) => (
 
+            // <p  className="Auth_Btn">
+            //   <PiUserCircleLight size={25} />
+            //   <span>Sign in</span>
+            // </p>
 
-          // <GoogleLogin
-          // clientId={
-          //   "756719838452-cn65r0g4adi05jnqtff6csbscgv5urfv.apps.googleusercontent.com"
-          // }
-          // onSuccess={onSuccess}
-          // onFailure={onFailure}
-          // render={(renderProps) => (
+            // )}
+            // />
 
-          // <p  className="Auth_Btn">
-          //   <PiUserCircleLight size={25} />
-          //   <span>Sign in</span>
-          // </p>
-
-          // )}
-          // />
-
-          <p onClick={()=>onSuccess()} className="Auth_Btn">
-            <PiUserCircleLight size={25} />
-            <span>Sign in</span>
-          </p>
-        )}
+            <p onClick={() => onSuccess()} className="Auth_Btn">
+              <PiUserCircleLight size={25} />
+              <span>Sign in</span>
+            </p>
+          )}
+        </div>
       </div>
-    </div>
+      {AuthBtn && <Auth setAuthBtn={setAuthBtn} User={currentUser} setEditCreateChannelBtn={setEditCreateChannelBtn} />}
+    </>
   );
 };
 
