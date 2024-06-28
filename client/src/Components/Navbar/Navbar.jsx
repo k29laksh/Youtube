@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./Navbar.css";
 import logo from "./youtube.svg";
 import { Link } from "react-router-dom";
@@ -7,15 +7,59 @@ import SearchBar from "./SearchBar/SearchBar";
 import { RiVideoAddLine } from "react-icons/ri";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { PiUserCircleLight } from "react-icons/pi";
+import {useDispatch, useSelector} from 'react-redux'
+import { login } from "../../actions/auth";
+// import { GoogleLogin } from "react-google-login";
+// import { gapi } from "gapi-script";
+
+
 
 const Navbar = ({wdtToggle}) => {
-  // const currentUser = null;
-  const currentUser = {
-      result: {
-        email: "lyz@mail.com",
-        joinedOn: "2222-07-15T09:57:23.489Z",
-      },
-    };
+  const currentUser =useSelector(state=>state.currentUserReducer)
+  console.log(currentUser)
+
+  
+  // const currentUser = {
+  //     result: {
+  //       email: "lyz@mail.com",
+  //       joinedOn: "2222-07-15T09:57:23.489Z",
+  //     },
+  //   };
+
+  const dispatch= useDispatch()
+
+  // const onSucess= (response)=>{
+  //   const Email= response?.profileObj.email || "zdead0505@gmail.com";
+  //   console.log(Email);
+  //   dispatch(login({email:Email}))
+  // }
+  // useEffect(() => {
+  //   function start() {
+  //     gapi.client.init({
+  //       clientId:
+  //         "756719838452-cn65r0g4adi05jnqtff6csbscgv5urfv.apps.googleusercontent.com",
+  //       scope: "email",
+  //     });
+  //   }
+  //   gapi.load("client:auth2", start);
+  // }, []);
+
+    const onSuccess= ()=>{
+    const Email= "zdead0505@gmail.com";
+    console.log(Email);
+    dispatch(login({email:Email}))
+  }
+
+  // const onSuccess = (response) => {
+  //   const Email = response?.profileObj.email;
+  //   // console.log(Email)
+  //   dispatch(login({ email: Email }));
+  //   // setLoginPage(false);
+  // };
+
+  // const onFailure = (response) => {
+  //   console.log("FAILED", response);
+  // };
 
 
   return (
@@ -61,7 +105,25 @@ const Navbar = ({wdtToggle}) => {
               </p>
             </div>
         ) : (
-          <p className="Auth_Btn">
+
+
+          // <GoogleLogin
+          // clientId={
+          //   "756719838452-cn65r0g4adi05jnqtff6csbscgv5urfv.apps.googleusercontent.com"
+          // }
+          // onSuccess={onSuccess}
+          // onFailure={onFailure}
+          // render={(renderProps) => (
+
+          // <p  className="Auth_Btn">
+          //   <PiUserCircleLight size={25} />
+          //   <span>Sign in</span>
+          // </p>
+
+          // )}
+          // />
+
+          <p onClick={()=>onSuccess()} className="Auth_Btn">
             <PiUserCircleLight size={25} />
             <span>Sign in</span>
           </p>
