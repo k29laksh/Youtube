@@ -2,15 +2,14 @@ import React from "react";
 import "./Channel.css";
 import { FaEdit, FaUpload } from "react-icons/fa";
 import { useSelector } from "react-redux";
-function DescribeChanel({setEditCreateChannelBtn,Cid}) {
-  
-  const channels = useSelector((state) => state.channelReducers);
-  console.log("all channels:",channels);
-console.log("current id:",Cid)
+function DescribeChanel({ setEditCreateChannelBtn, Cid }) {
+  const channels = useSelector((state) => state?.channelReducers);
+  console.log("all channels:", channels);
+  console.log("current id:", Cid);
   const currentChannel = channels.filter((user) => user._id === Cid)[0];
-  console.log("current channel:",currentChannel);
-  const currentUser = useSelector((state) => state.currentUserReducer);
-  console.log("current user:",currentUser);
+  console.log("current channel:", currentChannel);
+  const currentUser = useSelector((state) => state?.currentUserReducer);
+  console.log("current user:", currentUser);
   // const currentChannel = {
   //   age: "2022-06-01T00:00:00.000Z",
   //   email: "zdeady",
@@ -37,13 +36,16 @@ console.log("current id:",Cid)
       </div>
       {currentUser?.result._id === currentChannel?._id && (
         <>
-          <p onClick={()=>setEditCreateChannelBtn(true)} className="Editbtn_Chanel">
-          <FaEdit />
-            <b >Edit Chanel</b>
+          <p
+            onClick={() => setEditCreateChannelBtn(true)}
+            className="Editbtn_Chanel"
+          >
+            <FaEdit />
+            <b>Edit Chanel</b>
           </p>
           <p className="Uploadbtn_Chanel">
             <FaUpload />
-            <b >Upload Video</b>
+            <b>Upload Video</b>
           </p>
         </>
       )}

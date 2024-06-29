@@ -56,7 +56,7 @@ function Auth({ User, setAuthBtn, setEditCreateChannelBtn }) {
               />
             )}
             <div>
-              {/* <GoogleLogout
+              <GoogleLogout
                 clientId={
                   "756719838452-cn65r0g4adi05jnqtff6csbscgv5urfv.apps.googleusercontent.com"
                 }
@@ -68,11 +68,11 @@ function Auth({ User, setAuthBtn, setEditCreateChannelBtn }) {
                   //  <button onClick={renderProps.onClick} style={customStyle}>This is my custom Google button</button>
                 )}
                 onLogoutSuccess={onLogoutSuccess}
-              /> */}
-              <div onClick={() => onLogoutSuccess()} className="btn_Auth">
+              />
+              {/* <div onClick={() => onLogoutSuccess()} className="btn_Auth">
                 <BiLogOut />
                 Log Out
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

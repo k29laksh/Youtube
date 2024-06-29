@@ -7,6 +7,7 @@ import "./App.css";
 import CreateEditChannel from "./Pages/Channel/CreateEditChannel";
 import { useDispatch } from "react-redux";
 import { fetchAllChannel } from "./actions/channelUser";
+import VideoUpload from "./Pages/VideoUpload/VideoUpload";
 const App = () => {
 
 
@@ -36,6 +37,7 @@ useEffect(()=>{
 
   return (
     <Router>
+      <VideoUpload/>
       {editCreateChannelBtn && (
         <CreateEditChannel setEditCreateChannelBtn={setEditCreateChannelBtn} />
       )}{" "}

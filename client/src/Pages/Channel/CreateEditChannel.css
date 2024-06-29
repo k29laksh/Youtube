@@ -73,6 +73,7 @@
         right: 50px;
         cursor: pointer;
         position: absolute; 
+        z-index: 100;
         top: 3.5rem;
         transition: 1s color;
     }

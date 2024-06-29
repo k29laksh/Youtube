@@ -10,8 +10,8 @@ import { PiUserCircleLight } from "react-icons/pi";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/auth";
 import Auth from "../../Pages/Auth/Auth";
-// import { GoogleLogin } from "react-google-login";
-// import { gapi } from "gapi-script";
+import { GoogleLogin } from "react-google-login";
+import { gapi } from "gapi-script";
 
 const Navbar = ({ wdtToggle,setEditCreateChannelBtn }) => {
   const [AuthBtn, setAuthBtn] = useState(false);
@@ -35,33 +35,33 @@ const Navbar = ({ wdtToggle,setEditCreateChannelBtn }) => {
   //   console.log(Email);
   //   dispatch(login({email:Email}))
   // }
-  // useEffect(() => {
-  //   function start() {
-  //     gapi.client.init({
-  //       clientId:
-  //         "756719838452-cn65r0g4adi05jnqtff6csbscgv5urfv.apps.googleusercontent.com",
-  //       scope: "email",
-  //     });
-  //   }
-  //   gapi.load("client:auth2", start);
-  // }, []);
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId:
+          "750829065177-n2va0blt05pvl6eni7nkesk2321dkkbj.apps.googleusercontent.com",
+        scope: "email",
+      });
+    }
+    gapi.load("client:auth2", start);
+  }, []);
 
-  const onSuccess = () => {
-    const Email = "zdeady";
-    console.log(Email);
+  // const onSuccess = () => {
+  //   const Email = "zdeady";
+  //   console.log(Email);
+  //   dispatch(login({ email: Email }));
+  // };
+
+  const onSuccess = (response) => {
+    const Email = response?.profileObj.email;
+    // console.log(Email)
     dispatch(login({ email: Email }));
+    // setLoginPage(false);
   };
 
-  // const onSuccess = (response) => {
-  //   const Email = response?.profileObj.email;
-  //   // console.log(Email)
-  //   dispatch(login({ email: Email }));
-  //   // setLoginPage(false);
-  // };
-
-  // const onFailure = (response) => {
-  //   console.log("FAILED", response);
-  // };
+  const onFailure = (response) => {
+    console.log("FAILED", response);
+  };
 
   return (
     <>
@@ -109,26 +109,26 @@ const Navbar = ({ wdtToggle,setEditCreateChannelBtn }) => {
               </p>
             </div>
           ) : (
-            // <GoogleLogin
-            // clientId={
-            //   "756719838452-cn65r0g4adi05jnqtff6csbscgv5urfv.apps.googleusercontent.com"
-            // }
-            // onSuccess={onSuccess}
-            // onFailure={onFailure}
-            // render={(renderProps) => (
+            <GoogleLogin
+            clientId={
+              "750829065177-n2va0blt05pvl6eni7nkesk2321dkkbj.apps.googleusercontent.com"
+            }
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            render={(renderProps) => (
 
-            // <p  className="Auth_Btn">
-            //   <PiUserCircleLight size={25} />
-            //   <span>Sign in</span>
-            // </p>
-
-            // )}
-            // />
-
-            <p onClick={() => onSuccess()} className="Auth_Btn">
+              <p onClick={renderProps.onClick} className="Auth_Btn">
               <PiUserCircleLight size={25} />
               <span>Sign in</span>
             </p>
+
+            )}
+            />
+
+            // <p onClick={() => onSuccess()} className="Auth_Btn">
+            //   <PiUserCircleLight size={25} />
+            //   <span>Sign in</span>
+            // </p>
           )}
         </div>
       </div>
