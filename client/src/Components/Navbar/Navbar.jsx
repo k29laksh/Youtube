@@ -14,17 +14,19 @@ import Auth from "../../Pages/Auth/Auth";
 // import { gapi } from "gapi-script";
 
 const Navbar = ({ wdtToggle,setEditCreateChannelBtn }) => {
-  // const currentUser = useSelector((state) => state.currentUserReducer);
-  // console.log(currentUser);
-
   const [AuthBtn, setAuthBtn] = useState(false);
 
-  const currentUser = {
-    result: {
-      email: "lyz@mail.com",
-      joinedOn: "2222-07-15T09:57:23.489Z",
-    },
-  };
+
+  const currentUser = useSelector((state) => state.currentUserReducer);
+  console.log(currentUser);
+
+
+  // const currentUser = {
+  //   result: {
+  //     email: "lyz@mail.com",
+  //     joinedOn: "2222-07-15T09:57:23.489Z",
+  //   },
+  // };
 
   const dispatch = useDispatch();
 
@@ -45,7 +47,7 @@ const Navbar = ({ wdtToggle,setEditCreateChannelBtn }) => {
   // }, []);
 
   const onSuccess = () => {
-    const Email = "zdead0505@gmail.com";
+    const Email = "zdeady";
     console.log(Email);
     dispatch(login({ email: Email }));
   };

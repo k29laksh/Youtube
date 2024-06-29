@@ -44,7 +44,7 @@ function Auth({ User, setAuthBtn, setEditCreateChannelBtn }) {
           </p>
           <div className="btns_auth">
             {User?.result.name ? (
-              <Link to={`/chanel/${User?.result?._id}`} className="btn_Auth">
+              <Link to={`/channel/${User?.result?._id}`} className="btn_Auth">
                 Your Chanel
               </Link>
             ) : (

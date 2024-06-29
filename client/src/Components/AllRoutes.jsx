@@ -7,8 +7,9 @@ import LikedVideo from "../Pages/LikedVideo/LikedVideo";
 import Library from "../Pages/Library/Library";
 import YourVideos from "../Pages/YourVideos/YourVideos";
 import VideoPage from "../Pages/VideoPage/VideoPage.jsx";
+import Channel from "../Pages/Channel/Channel.jsx";
 
-const AllRoutes = () => {
+const AllRoutes = ({setEditCreateChannelBtn}) => {
   return (
     <Routes>
           <Route path="/" element={<Home />} />
@@ -18,6 +19,7 @@ const AllRoutes = () => {
       <Route path="/library" element={<Library />} />
       <Route path="/yourvideo" element={<YourVideos />} />
       <Route path="/videopage/:vid" element={<VideoPage />} />
+      <Route path="/channel/:Cid" element={<Channel setEditCreateChannelBtn={setEditCreateChannelBtn}/>} />
     </Routes>
   )
 }

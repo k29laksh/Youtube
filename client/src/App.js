@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Components/Navbar/Navbar";
 import { BrowserRouter as Router } from "react-router-dom";
 import AllRoutes from "./Components/AllRoutes";
 import DrawerSidebar from "./Components/LeftSidebar/DrawerSidebar";
 import "./App.css";
 import CreateEditChannel from "./Pages/Channel/CreateEditChannel";
+import { useDispatch } from "react-redux";
+import { fetchAllChannel } from "./actions/channelUser";
 const App = () => {
+
+
+const dispatch = useDispatch()
+
+useEffect(()=>{
+  dispatch(fetchAllChannel());
+},[dispatch])
+
   const [LeftSidebarBtn, setLeftSidebarBtn] = useState({
     display: "none",
   });
@@ -34,7 +44,7 @@ const App = () => {
         setEditCreateChannelBtn={setEditCreateChannelBtn}
       />
       <DrawerSidebar wdtToggle={wdtToggle} LeftSidebarBtn={LeftSidebarBtn} />
-      <AllRoutes />
+      <AllRoutes setEditCreateChannelBtn={setEditCreateChannelBtn}/>
     </Router>
   );
 };
