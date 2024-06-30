@@ -9,7 +9,7 @@ import YourVideos from "../Pages/YourVideos/YourVideos";
 import VideoPage from "../Pages/VideoPage/VideoPage.jsx";
 import Channel from "../Pages/Channel/Channel.jsx";
 
-const AllRoutes = ({setEditCreateChannelBtn}) => {
+const AllRoutes = ({setEditCreateChannelBtn,setVideoUploadPage}) => {
   return (
     <Routes>
           <Route path="/" element={<Home />} />
@@ -19,7 +19,7 @@ const AllRoutes = ({setEditCreateChannelBtn}) => {
       <Route path="/library" element={<Library />} />
       <Route path="/yourvideo" element={<YourVideos />} />
       <Route path="/videopage/:vid" element={<VideoPage />} />
-      <Route path="/channel/:Cid" element={<Channel setEditCreateChannelBtn={setEditCreateChannelBtn}/>} />
+      <Route path="/channel/:Cid" element={<Channel setVideoUploadPage={setVideoUploadPage} setEditCreateChannelBtn={setEditCreateChannelBtn}/>} />
     </Routes>
   )
 }

@@ -5,7 +5,7 @@ import { uploadVideo } from "../../actions/video";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
 
-const VideoUpload = () => {
+const VideoUpload = ({setVideoUploadPage}) => {
 
     const dispatch = useDispatch();
     const [singleProgress, setSingleProgress] = useState(0); //
@@ -26,7 +26,7 @@ const VideoUpload = () => {
             setSingleProgress(percentage);
             if (percentage === 100) {
               setTimeout(function () {}, 3000);
-            //   setUploadVideo(false);
+              setVideoUploadPage(false);
             }
           }, 
       }
@@ -38,19 +38,19 @@ const VideoUpload = () => {
           alert("Plese Enter a Title of Your Video");
         } else if (!videoFile) {
           alert("Plese Attach Your Video");
-        } else if (videoFile.size > 1000000) {
+        } else if (videoFile.size > 100000000) {
           alert("Plese Attach less than 1kb File");
         } else {
         //   setDisable(false);
-          const formData = new FormData();
-          formData.append("file", videoFile);
-          formData.append("title", title);
-          formData.append("chanel", User?.result?._id);
-          formData.append("Uploder", User?.result?.name);
-          console.log(fileOptions)
+          const fileData = new FormData();
+          fileData.append("file", videoFile);
+          fileData.append("title", title);
+          fileData.append("chanel", User?.result?._id);
+          fileData.append("Uploder", User?.result?.name);
+          // console.log(videoFile)
           dispatch(
             uploadVideo({
-              formData,
+              fileData,
               fileOptions,
             })
           );
@@ -63,7 +63,7 @@ const VideoUpload = () => {
         name="text"
         value={"X"}
         className="ibtn_x"
-        // onClick={() => setEditCreateChannelBtn(false)}
+        onClick={() => setVideoUploadPage(false)}
       />
       <div className="container2_VideoUpload">
         <div className="ibox_div_videoUpload">

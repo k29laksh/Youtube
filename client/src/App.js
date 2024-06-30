@@ -8,14 +8,18 @@ import CreateEditChannel from "./Pages/Channel/CreateEditChannel";
 import { useDispatch } from "react-redux";
 import { fetchAllChannel } from "./actions/channelUser";
 import VideoUpload from "./Pages/VideoUpload/VideoUpload";
+import { getVideos } from "./actions/video";
+import { getlikedVideo } from "./actions/likedVideo";
 const App = () => {
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchAllChannel());
+    dispatch(getVideos());
+    dispatch(getlikedVideo());
+    
 
-const dispatch = useDispatch()
-
-useEffect(()=>{
-  dispatch(fetchAllChannel());
-},[dispatch])
+  }, [dispatch]);
 
   const [LeftSidebarBtn, setLeftSidebarBtn] = useState({
     display: "none",
@@ -34,10 +38,10 @@ useEffect(()=>{
   };
 
   const [editCreateChannelBtn, setEditCreateChannelBtn] = useState(false);
-
+  const [videoUploadPage, setVideoUploadPage] = useState(false);
   return (
     <Router>
-      <VideoUpload/>
+      {videoUploadPage && <VideoUpload setVideoUploadPage={setVideoUploadPage} />}
       {editCreateChannelBtn && (
         <CreateEditChannel setEditCreateChannelBtn={setEditCreateChannelBtn} />
       )}{" "}
@@ -46,7 +50,7 @@ useEffect(()=>{
         setEditCreateChannelBtn={setEditCreateChannelBtn}
       />
       <DrawerSidebar wdtToggle={wdtToggle} LeftSidebarBtn={LeftSidebarBtn} />
-      <AllRoutes setEditCreateChannelBtn={setEditCreateChannelBtn}/>
+      <AllRoutes setVideoUploadPage={setVideoUploadPage} setEditCreateChannelBtn={setEditCreateChannelBtn} />
     </Router>
   );
 };

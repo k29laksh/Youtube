@@ -2,8 +2,11 @@ import React from "react";
 import LeftSidebar from "../LeftSidebar/LeftSidebar";
 import { AiOutlineDelete } from "react-icons/ai";
 import WHLVideoList from "./WHLVideoList";
+import { useSelector } from "react-redux";
 
 const WHL = ({ page, videoList }) => {
+  const currentUser = useSelector((state) => state.currentUserReducer);
+
   return (
     <div className="container_pages">
       <LeftSidebar />
@@ -19,7 +22,7 @@ const WHL = ({ page, videoList }) => {
         </div>
 
         <div className="Whl_list">
-          <WHLVideoList page={page} videoList={videoList} />
+          <WHLVideoList currentUser={currentUser?.result?._id} page={page} videoList={videoList} />
         </div>
       </div>
     </div>

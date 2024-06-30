@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { MdOutlinePlaylistAdd } from "react-icons/md";
 import { MdOutlinePlaylistAddCheck } from "react-icons/md";
@@ -10,11 +10,22 @@ import { BiDislike } from "react-icons/bi";
 import { BiSolidDislike } from "react-icons/bi";
 
 import { PiShareFatLight } from "react-icons/pi";
+import { useDispatch, useSelector } from "react-redux";
+import { likeVideo } from "../../actions/video";
+import { addTolikedVideo, deletelikedVideo } from "../../actions/likedVideo";
 
-const LikeWatchLaterSaveBtns = () => {
+const LikeWatchLaterSaveBtns = ({ vv, vid }) => {
+  const currentUser = useSelector((state) => state.currentUserReducer);
+
+  const dispatch = useDispatch();
   const [saveVideo, setSaveVideo] = useState(false);
-  const [likeVideo, setLikeVideo] = useState(false);
-  const [dislikeVideo, setDislikeVideo] = useState(false);
+  const [like, setLike] = useState(false);
+  const [dislike, setDislike] = useState(false);
+  const likedVideoList=useSelector(state=>state.likedVideoReducer)
+
+  useEffect(()=>{
+    likedVideoList?.data.filter(q=>q?.videoId===vid && q?.Viewer === currentUser?.result._id).map(m=>setLike(true))
+  },[currentUser])
 
   const toogleSavedVideo = () => {
     if (saveVideo) {
@@ -23,22 +34,45 @@ const LikeWatchLaterSaveBtns = () => {
       setSaveVideo(true);
     }
   };
-  const toogleLikeBtn = () => {
-    if (likeVideo) {
-      setLikeVideo(false);
+  const toogleLikeBtn = (e, lk) => {
+    if (currentUser !== null) {
+      if (like) {
+        setLike(false);
+        dispatch(likeVideo({ id: vid, Like: lk - 1 }));
+        dispatch(
+          deletelikedVideo({ videoId: vid, Viewer: currentUser?.result._id })
+        );
+      } else {
+        setLike(true);
+        dispatch(likeVideo({ id: vid, Like: lk + 1 }));
+        dispatch(
+          addTolikedVideo({ videoId: vid, Viewer: currentUser?.result?._id })
+        );
+        setDislike(false);
+      }
     } else {
-      setLikeVideo(true);
-      setDislikeVideo(false);
+      alert("Plz Login to like the Video");
     }
   };
-  const toogleDislikeBtn = () => {
-    if (dislikeVideo) {
-      setDislikeVideo(false);
+  const toogleDislike = (e, lk) => {
+   if(currentUser!==null){
+    if (dislike) {
+      setDislike(false);
     } else {
-      setDislikeVideo(true);
-      setLikeVideo(false);
-
+      setDislike(true);
     }
+
+    if (like) {
+      dispatch(likeVideo({ id: vid, Like: lk - 1 }));
+    }
+    dispatch(
+      deletelikedVideo({ videoId: vid, Viewer: currentUser?.result._id })
+    );
+    setLike(false);
+   }
+   else {
+    alert("Plz Login to DisLike The Video");
+  }
   };
 
   return (
@@ -58,7 +92,10 @@ const LikeWatchLaterSaveBtns = () => {
       </div>
 
       <div className="btn_videoPage">
-        <div className="like_videoPage"  onClick={()=>toogleSavedVideo()}>
+        <div
+          className="like_videoPage"
+          onClick={(e) => toogleSavedVideo(e, vv.Like)}
+        >
           {saveVideo ? (
             <>
               <MdOutlinePlaylistAdd size={28} className="btns_vid" />
@@ -73,8 +110,11 @@ const LikeWatchLaterSaveBtns = () => {
         </div>
       </div>
       <div className="btn_like_videoPage">
-        <div className="like_videoPage" onClick={()=>toogleLikeBtn()}>
-          {likeVideo ? (
+        <div
+          className="like_videoPage"
+          onClick={(e) => toogleLikeBtn(e, vv.Like)}
+        >
+          {like ? (
             <>
               <BiSolidLike size={20} className="btns_vid" />
             </>
@@ -83,11 +123,11 @@ const LikeWatchLaterSaveBtns = () => {
               <BiLike size={20} className="btns_vid" />
             </>
           )}
-          <p>2.3K</p>
+          <p>{vv.Like}</p>
         </div>
         <div className="like_line"></div>
-        <div className="dislike_videoPage" onClick={()=>toogleDislikeBtn()}>
-          {dislikeVideo ? (
+        <div className="dislike_videoPage" onClick={() => toogleDislike()}>
+          {dislike ? (
             <>
               <BiSolidDislike size={20} className="btns_vid" />
             </>

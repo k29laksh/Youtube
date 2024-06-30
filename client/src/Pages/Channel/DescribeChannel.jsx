@@ -2,10 +2,10 @@ import React from "react";
 import "./Channel.css";
 import { FaEdit, FaUpload } from "react-icons/fa";
 import { useSelector } from "react-redux";
-function DescribeChanel({ setEditCreateChannelBtn, Cid }) {
+function DescribeChanel({ setEditCreateChannelBtn, Cid ,setVideoUploadPage}) {
   const channels = useSelector((state) => state?.channelReducers);
-  console.log("all channels:", channels);
-  console.log("current id:", Cid);
+  // console.log("all channels:", channels);
+  // console.log("current id:", Cid);
   const currentChannel = channels.filter((user) => user._id === Cid)[0];
   console.log("current channel:", currentChannel);
   const currentUser = useSelector((state) => state?.currentUserReducer);
@@ -43,7 +43,7 @@ function DescribeChanel({ setEditCreateChannelBtn, Cid }) {
             <FaEdit />
             <b>Edit Chanel</b>
           </p>
-          <p className="Uploadbtn_Chanel">
+          <p className="Uploadbtn_Chanel" onClick={()=>setVideoUploadPage(true)}>
             <FaUpload />
             <b>Upload Video</b>
           </p>

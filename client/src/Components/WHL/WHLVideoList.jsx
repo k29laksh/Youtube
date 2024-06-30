@@ -1,12 +1,13 @@
 import React from "react";
 import ShowVideoList from "../ShowVideoList/ShowVideoList";
 
-const WHLVideoList = ({ page, videoList }) => {
+const WHLVideoList = ({ page, videoList,currentUser }) => {
+  // console.log(videoList)
   return (
     <>
-      {videoList.map((m) => (
+      {videoList?.data?.filter(q=>q?.Viewer===currentUser).reverse().map((m) => (
         <>
-          <ShowVideoList videoId={m._id} key={m._id}/>
+          <ShowVideoList videoId={m?.videoId} key={m?._id}/>
         </>
       ))}{" "}
     </>

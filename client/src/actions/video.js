@@ -3,11 +3,11 @@ import * as api from "../api";
 export const uploadVideo = (videoData) => async (dispatch) => {
   try {
     // console.log(videoData);
-    const { formData, singleFileOptions } = videoData;
-    // console.log(formData)
-    const { data } = await api.uploadVideo(formData, singleFileOptions);
+    const { fileData, fileOptions } = videoData;
+    console.log(fileData)
+    const { data } = await api.uploadVideo(fileData, fileOptions);
     dispatch({ type: "POST_VIDEO", data });
-    dispatch(getVideos());
+    // dispatch(getVideos());
   } catch (error) {
     // console.log(error.response.data);
     alert(error.response.data.message);
@@ -36,17 +36,17 @@ export const likeVideo = (LikeData) => async (dispatch) => {
       console.log(error)
   }
 }
-export const viewVideo = (ViewData) => async (dispatch) => {
-  try {
-      const { id } = ViewData;
-      // console.log(Views)
-      const { data } = await api.viewVideo(id);
-      dispatch({ type: 'POST_VIEW', payload: data })
-      dispatch(getVideos())
-  } catch (error) {
-      console.log(error)
-  }
-}
+// export const viewVideo = (ViewData) => async (dispatch) => {
+//   try {
+//       const { id } = ViewData;
+//       // console.log(Views)
+//       const { data } = await api.viewVideo(id);
+//       dispatch({ type: 'POST_VIEW', payload: data })
+//       dispatch(getVideos())
+//   } catch (error) {
+//       console.log(error)
+//   }
+// }
 
 
 // getHistory()

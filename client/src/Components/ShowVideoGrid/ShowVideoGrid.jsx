@@ -3,6 +3,8 @@ import './ShowVideoGrid.css'
 import ShowVideo from '../ShowVideo/ShowVideo'
 
 const ShowVideoGrid = ({vids}) => {
+
+  
   return (
     <div className='Container_ShowVideoGrid'>
         {
