@@ -1,15 +1,35 @@
 import React from "react";
 import ShowVideoList from "../ShowVideoList/ShowVideoList";
 
-const WHLVideoList = ({ page, videoList,currentUser }) => {
-  // console.log(videoList)
+const WHLVideoList = ({ page, videoList, currentUser }) => {
+  console.log(videoList);
   return (
     <>
-      {videoList?.data?.filter(q=>q?.Viewer===currentUser).reverse().map((m) => (
+      {currentUser ? (
         <>
-          <ShowVideoList videoId={m?.videoId} key={m?._id}/>
+          {videoList?.data
+            ?.filter((q) => q?.Viewer === currentUser)
+            .reverse()
+            .map((m) => {
+              // console.log(m);
+              return (
+                <>
+                  <ShowVideoList
+                    key={m._id}
+                    videoId={m?.videoId}
+                    date={m?.viewedOn}
+                  />
+                </>
+              );
+            })}
         </>
-      ))}{" "}
+      ) : (
+        <>
+          <h2 style={{ color: "white" }}>
+            Plz Login to watch your {page} list
+          </h2>
+        </>
+      )}
     </>
   );
 };

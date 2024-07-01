@@ -8,6 +8,7 @@ import Library from "../Pages/Library/Library";
 import YourVideos from "../Pages/YourVideos/YourVideos";
 import VideoPage from "../Pages/VideoPage/VideoPage.jsx";
 import Channel from "../Pages/Channel/Channel.jsx";
+import Search from "../Pages/Search/Search.jsx";
 
 const AllRoutes = ({setEditCreateChannelBtn,setVideoUploadPage}) => {
   return (
@@ -19,6 +20,7 @@ const AllRoutes = ({setEditCreateChannelBtn,setVideoUploadPage}) => {
       <Route path="/library" element={<Library />} />
       <Route path="/yourvideo" element={<YourVideos />} />
       <Route path="/videopage/:vid" element={<VideoPage />} />
+      <Route path="/search/:searchQuery" element={<Search />} />
       <Route path="/channel/:Cid" element={<Channel setVideoUploadPage={setVideoUploadPage} setEditCreateChannelBtn={setEditCreateChannelBtn}/>} />
     </Routes>
   )

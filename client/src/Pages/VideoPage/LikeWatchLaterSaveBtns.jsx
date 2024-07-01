@@ -13,6 +13,7 @@ import { PiShareFatLight } from "react-icons/pi";
 import { useDispatch, useSelector } from "react-redux";
 import { likeVideo } from "../../actions/video";
 import { addTolikedVideo, deletelikedVideo } from "../../actions/likedVideo";
+import { addTowatchLater, deletewatchLater } from "../../actions/watchLater";
 
 const LikeWatchLaterSaveBtns = ({ vv, vid }) => {
   const currentUser = useSelector((state) => state.currentUserReducer);
@@ -21,17 +22,38 @@ const LikeWatchLaterSaveBtns = ({ vv, vid }) => {
   const [saveVideo, setSaveVideo] = useState(false);
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
-  const likedVideoList=useSelector(state=>state.likedVideoReducer)
+  const likedVideoList = useSelector((state) => state.likedVideoReducer);
+  const watchLaterList=useSelector(state=>state.watchLaterReducer)
 
-  useEffect(()=>{
-    likedVideoList?.data.filter(q=>q?.videoId===vid && q?.Viewer === currentUser?.result._id).map(m=>setLike(true))
-  },[currentUser])
+  useEffect(() => {
+    likedVideoList?.data
+      .filter(
+        (q) => q?.videoId === vid && q?.Viewer === currentUser?.result._id
+      )
+      .map((m) => setLike(true));
+      watchLaterList?.data
+      .filter(
+        (q) => q?.videoId === vid && q?.Viewer === currentUser?.result._id
+      )
+      .map((m) => setSaveVideo(true));
+  }, [currentUser]);
 
   const toogleSavedVideo = () => {
-    if (saveVideo) {
-      setSaveVideo(false);
+    if (currentUser !== null) {
+      if (saveVideo) {
+        setSaveVideo(false);
+        dispatch(
+          deletewatchLater({ videoId: vid, Viewer: currentUser?.result?._id })
+        );
+      } else {
+        setSaveVideo(true);
+        console.log(vid, " ", currentUser?.result?._id);
+        dispatch(
+          addTowatchLater({ videoId: vid, Viewer: currentUser?.result?._id })
+        );
+      }
     } else {
-      setSaveVideo(true);
+      alert("Plz Login to like the Video");
     }
   };
   const toogleLikeBtn = (e, lk) => {
@@ -55,24 +77,23 @@ const LikeWatchLaterSaveBtns = ({ vv, vid }) => {
     }
   };
   const toogleDislike = (e, lk) => {
-   if(currentUser!==null){
-    if (dislike) {
-      setDislike(false);
-    } else {
-      setDislike(true);
-    }
+    if (currentUser !== null) {
+      if (dislike) {
+        setDislike(false);
+      } else {
+        setDislike(true);
+      }
 
-    if (like) {
-      dispatch(likeVideo({ id: vid, Like: lk - 1 }));
+      if (like) {
+        dispatch(likeVideo({ id: vid, Like: lk - 1 }));
+      }
+      dispatch(
+        deletelikedVideo({ videoId: vid, Viewer: currentUser?.result._id })
+      );
+      setLike(false);
+    } else {
+      alert("Plz Login to DisLike The Video");
     }
-    dispatch(
-      deletelikedVideo({ videoId: vid, Viewer: currentUser?.result._id })
-    );
-    setLike(false);
-   }
-   else {
-    alert("Plz Login to DisLike The Video");
-  }
   };
 
   return (
@@ -98,12 +119,12 @@ const LikeWatchLaterSaveBtns = ({ vv, vid }) => {
         >
           {saveVideo ? (
             <>
-              <MdOutlinePlaylistAdd size={28} className="btns_vid" />
+              <MdOutlinePlaylistAddCheck size={28} className="btns_vid" />
               <p className="btn_name">Save</p>
             </>
           ) : (
             <>
-              <MdOutlinePlaylistAddCheck size={28} className="btns_vid" />
+              <MdOutlinePlaylistAdd size={28} className="btns_vid" />
               <p className="btn_name">Saved</p>
             </>
           )}

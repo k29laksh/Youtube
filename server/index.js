@@ -5,6 +5,7 @@ import cors from "cors";
 import path from "path";
 import userRoutes from "./routes/userRoutes.js";
 import videoRoutes from "./routes/videoRoutes.js";
+import commentRoutes from "./routes/commentRoutes.js";
 dotenv.config();
 dbconnect();
 
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRoutes);
 app.use("/video", videoRoutes);
+app.use("/comments", commentRoutes);
 
 const port = process.env.PORT || 5500;
 

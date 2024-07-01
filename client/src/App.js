@@ -10,6 +10,9 @@ import { fetchAllChannel } from "./actions/channelUser";
 import VideoUpload from "./Pages/VideoUpload/VideoUpload";
 import { getVideos } from "./actions/video";
 import { getlikedVideo } from "./actions/likedVideo";
+import { getwatchLater } from "./actions/watchLater";
+import { getAllHistory } from "./actions/history";
+import { getAllcomments } from "./actions/comments";
 const App = () => {
   const dispatch = useDispatch();
 
@@ -17,6 +20,9 @@ const App = () => {
     dispatch(fetchAllChannel());
     dispatch(getVideos());
     dispatch(getlikedVideo());
+    dispatch(getwatchLater());
+    dispatch(getAllHistory());
+    dispatch(getAllcomments())
     
 
   }, [dispatch]);

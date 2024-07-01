@@ -10,83 +10,89 @@ import { FaHistory } from "react-icons/fa";
 import { MdOutlineWatchLater } from "react-icons/md";
 
 import "./Library.css";
+import { useSelector } from "react-redux";
 function Library() {
-  const vids = [
-    {
-      _id: 1,
-      video_src: vid1,
-      Channel: "62bafejk4hsf",
-      title: "video 1",
-      Uploader: "Chai and Code",
-      description: "Complete backend and JavaScript developer course part 2",
-    },
+  // const vids = [
+  //   {
+  //     _id: 1,
+  //     video_src: vid1,
+  //     Channel: "62bafejk4hsf",
+  //     title: "video 1",
+  //     Uploader: "Chai and Code",
+  //     description: "Complete backend and JavaScript developer course part 2",
+  //   },
 
-    {
-      _id: 2,
-      video_src: vid2,
-      Channel: "62bs4hsf",
-      title: "video 2",
-      Uploader: "Fox Cricket",
-      description: "Australia pick their ODI World XI | Top Order",
-    },
-    {
-      _id: 3,
-      video_src: vid3,
-      Channel: "62badk4hsf",
-      title: "video 3",
-      Uploader: "Chai and Code",
-      description: "Complete backend developer course part 2",
-    },
-    {
-      _id: 4,
-      video_src: vid4,
-      Channel: "62bafk4hsf",
-      title: "video 4",
-      Uploader: "Javascript Mastry",
-      description: "description of video 4",
-    },
-    {
-      _id: 5,
-      video_src: vid4,
-      Channel: "62bafk4hsf",
-      title: "video 5",
-      Uploader: "FoL",
-      description: "description of video 5",
-    },
-    {
-      _id: 6,
-      video_src: vid1,
-      Channel: "62bafejk4hsf",
-      title: "video 1",
-      Uploader: "Chai and Code",
-      description: "Complete backend and JavaScript developer course part 2",
-    },
+  //   {
+  //     _id: 2,
+  //     video_src: vid2,
+  //     Channel: "62bs4hsf",
+  //     title: "video 2",
+  //     Uploader: "Fox Cricket",
+  //     description: "Australia pick their ODI World XI | Top Order",
+  //   },
+  //   {
+  //     _id: 3,
+  //     video_src: vid3,
+  //     Channel: "62badk4hsf",
+  //     title: "video 3",
+  //     Uploader: "Chai and Code",
+  //     description: "Complete backend developer course part 2",
+  //   },
+  //   {
+  //     _id: 4,
+  //     video_src: vid4,
+  //     Channel: "62bafk4hsf",
+  //     title: "video 4",
+  //     Uploader: "Javascript Mastry",
+  //     description: "description of video 4",
+  //   },
+  //   {
+  //     _id: 5,
+  //     video_src: vid4,
+  //     Channel: "62bafk4hsf",
+  //     title: "video 5",
+  //     Uploader: "FoL",
+  //     description: "description of video 5",
+  //   },
+  //   {
+  //     _id: 6,
+  //     video_src: vid1,
+  //     Channel: "62bafejk4hsf",
+  //     title: "video 1",
+  //     Uploader: "Chai and Code",
+  //     description: "Complete backend and JavaScript developer course part 2",
+  //   },
 
-    {
-      _id: 7,
-      video_src: vid2,
-      Channel: "62bs4hsf",
-      title: "video 2",
-      Uploader: "Fox Cricket",
-      description: "Australia pick their ODI World XI | Top Order",
-    },
-    {
-      _id: 8,
-      video_src: vid3,
-      Channel: "62badk4hsf",
-      title: "video 3",
-      Uploader: "Chai and Code",
-      description: "Complete backend developer course part 2",
-    },
-    {
-      _id: 9,
-      video_src: vid4,
-      Channel: "62bafk4hsf",
-      title: "video 4",
-      Uploader: "Javascript Mastry",
-      description: "description of video 4",
-    },
-  ];
+  //   {
+  //     _id: 7,
+  //     video_src: vid2,
+  //     Channel: "62bs4hsf",
+  //     title: "video 2",
+  //     Uploader: "Fox Cricket",
+  //     description: "Australia pick their ODI World XI | Top Order",
+  //   },
+  //   {
+  //     _id: 8,
+  //     video_src: vid3,
+  //     Channel: "62badk4hsf",
+  //     title: "video 3",
+  //     Uploader: "Chai and Code",
+  //     description: "Complete backend developer course part 2",
+  //   },
+  //   {
+  //     _id: 9,
+  //     video_src: vid4,
+  //     Channel: "62bafk4hsf",
+  //     title: "video 4",
+  //     Uploader: "Javascript Mastry",
+  //     description: "description of video 4",
+  //   },
+  // ];
+  const likedVideoList=useSelector(state=>state.likedVideoReducer)
+  const watchLaterList=useSelector(state=>state.watchLaterReducer)
+  const watchHistoryList =useSelector(state=>state.historyReducer)
+  const currentUser = useSelector((state) => state.currentUserReducer);
+
 
   return (
     <div className="container_pages">
@@ -103,7 +109,7 @@ function Library() {
               <div className="library_name">History</div>
             </div>
             <div className="container_videoList_LibraryPage">
-              <WHLVideoList page="" videoList={vids} />
+              <WHLVideoList currentUser={currentUser?.result?._id} page="Watch History" videoList={watchHistoryList} />
             </div>
           </div>
           <div className="library_section">
@@ -112,7 +118,7 @@ function Library() {
               <div className="library_name">Watch Later</div>
             </div>
             <div className="container_videoList_LibraryPage">
-              <WHLVideoList page="" videoList={vids} />
+              <WHLVideoList currentUser={currentUser?.result?._id} page="Watch Later" videoList={watchLaterList} />
             </div>
           </div>
           <div className="library_section">
@@ -121,7 +127,7 @@ function Library() {
               <div className="library_name">Liked Videos</div>
             </div>
             <div className="container_videoList_LibraryPage">
-              <WHLVideoList page="" videoList={vids} />
+              <WHLVideoList currentUser={currentUser?.result?._id} page="Liked Video" videoList={likedVideoList} />
             </div>
           </div>
         </div>

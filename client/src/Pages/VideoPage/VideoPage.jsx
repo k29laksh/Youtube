@@ -1,17 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./VideoPage.css";
 import vid1 from "../../Components/Video/sample3.mp4";
 import LikeWatchLaterSaveBtns from "./LikeWatchLaterSaveBtns";
 import Comments from "../../Components/Comments/Comments";
 import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
+import { addToHistory } from "../../actions/history";
+import { viewVideo } from "../../actions/video";
 
 const VideoPage = () => {
   const { vid } = useParams();
+  const dispatch = useDispatch();
+
   const vids = useSelector((state) => state.videoReducer);
 
   const vv = vids?.data.filter((q) => q._id === vid)[0];
+
+  const currentUser = useSelector((state) => state.currentUserReducer);
+  const handleHistory = () => {
+    dispatch(
+      addToHistory({
+        videoId: vid,
+        Viewer: currentUser?.result._id,
+      })
+    );
+  };
+
+const handleViews=()=>{
+  dispatch(viewVideo({
+    id:vid
+  }))
+}
+
+  useEffect(() => {
+    if (currentUser) {
+      handleHistory();
+    }
+
+    handleViews()
+  },[]);
 
   // const channels = useSelector((state) => state?.channelReducers);
 
@@ -33,9 +61,10 @@ const VideoPage = () => {
               <div className="video_btns_title_videoPage_cont">
                 <p className="video_title_videoPage">{vv?.videoTitle}</p>
                 <div className="videoPage_channel_info">
-                  <Link to={`/channel/${vv?.videoChanel}`}
-
-                  className="videoPage_channel_logo_and_name">
+                  <Link
+                    to={`/channel/${vv?.videoChanel}`}
+                    className="videoPage_channel_logo_and_name"
+                  >
                     <div className="videoPage_logo">
                       {vv?.Uploder?.charAt(0).toUpperCase()}
                     </div>
@@ -44,7 +73,7 @@ const VideoPage = () => {
                       <p className="channel_subscribers">328K subscribers</p>
                     </div>
                   </Link>
-                  <LikeWatchLaterSaveBtns vv={vv} vid={vid}/>
+                  <LikeWatchLaterSaveBtns vv={vv} vid={vid} />
                 </div>
               </div>
 
@@ -58,7 +87,7 @@ const VideoPage = () => {
 
               <div className="videoPage_comment">
                 <div className="videoPage_comment_heading">346 Comments</div>
-                <Comments />
+                <Comments videoId={vv._id}/>
               </div>
             </div>
           </div>

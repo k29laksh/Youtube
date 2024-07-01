@@ -1,18 +1,45 @@
 import React, { useState } from "react";
 import "./Comments.css";
 import DisplayComments from "./DisplayComments";
+import {useDispatch, useSelector} from 'react-redux'
+import { postComment } from "../../actions/comments";
 
-const Comments = () => {
+const Comments = ({videoId}) => {
   const [comment, setComment] = useState("");
-  const commentsList = [
-    {id:1, commentBody: "hello", userCommented: "abc" },
-    {id:2, commentBody: "Hi", userCommented: "xyz" },
-    {id:3, commentBody: "bol bhai", userCommented: "pqr" },
-  ];
+  const currentUser = useSelector((state) => state.currentUserReducer);
+
+  const commentsList=useSelector((s) => s.commentReducer);
+  // const commentsList = [
+  //   {id:1, commentBody: "hello", userCommented: "abc" },
+  //   {id:2, commentBody: "Hi", userCommented: "xyz" },
+  //   {id:3, commentBody: "bol bhai", userCommented: "pqr" },
+  // ];
+
+  const dispatch =useDispatch()
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(comment);
-    setComment("");
+if(currentUser)
+  {
+    
+    if(!comment)
+      {
+        alert("Plz type your comment ")
+      }
+
+      else{
+        dispatch(postComment({
+          videoId:videoId,
+          userId:currentUser?.result._id,
+          commentBody :comment,
+          userCommented:currentUser?.result.name
+        }))
+        setComment("");
+      }
+  }
+
+  else{
+    alert("plz login to comment")
+  }
   };
   return (
     <>
@@ -45,10 +72,12 @@ const Comments = () => {
         </div>
       </form>
       <div className="display_comment_container">
-        {commentsList.map((m) => (
+        {commentsList?.data?.filter(q=>videoId=== q?.videoId).reverse().map((m) => (
           <DisplayComments
-            cmt_id={m.id}
+            cmt_id={m._id}
+            userId={m.userId}
             commentBody={m.commentBody}
+            commentOn={m.commentOn}
             userCommented={m.userCommented}
           />
         ))}

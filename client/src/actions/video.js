@@ -36,17 +36,17 @@ export const likeVideo = (LikeData) => async (dispatch) => {
       console.log(error)
   }
 }
-// export const viewVideo = (ViewData) => async (dispatch) => {
-//   try {
-//       const { id } = ViewData;
-//       // console.log(Views)
-//       const { data } = await api.viewVideo(id);
-//       dispatch({ type: 'POST_VIEW', payload: data })
-//       dispatch(getVideos())
-//   } catch (error) {
-//       console.log(error)
-//   }
-// }
+export const viewVideo = (ViewData) => async (dispatch) => {
+  try {
+      const { id } = ViewData;
+      // console.log(Views)
+      const { data } = await api.viewVideo(id);
+      dispatch({ type: 'POST_VIEW', payload: data })
+      dispatch(getVideos())
+  } catch (error) {
+      console.log(error)
+  }
+}
 
 
 // getHistory()

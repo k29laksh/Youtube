@@ -3,13 +3,16 @@ import { IoSearchOutline } from "react-icons/io5";
 import './SearchBar.css'
 import { BsMicFill } from "react-icons/bs";
 import SearchList from './SearchList';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery]=useState("")
   const[searchListA,setSearchList]= useState(false)
   // const TitleArray=["All","React", "Music", "Trailers", "JavaScript", "News", "Live" ]
-  const TitleArray=["RTK Queries tutorial","Backend Node js", "Ind vs Aus highligts", "trailers", "Backend Node js"].filter(q=>q.toUpperCase().includes(searchQuery.toUpperCase()))
+  const TitleArray=useSelector(s=>s.videoReducer)?.data?.filter(q=>q?.videoTitle.toUpperCase().includes(searchQuery.toUpperCase())).map(m=>m?.videoTitle)
+  // 
 
   return (
     <div className='search_container'>
@@ -20,9 +23,10 @@ const SearchBar = () => {
                onClick={e=> setSearchList(true)} 
                type="text" className='search_input' placeholder='Search' />
 
-        <IoSearchOutline className='search_icon'
+      <Link to={`/search/${searchQuery}`}>
+      <IoSearchOutline className='search_icon'
          onClick={e=> setSearchList(false)} 
-         />
+         /></Link>
         <BsMicFill className='mic_icon'/>
 
         { searchQuery && searchListA&&
