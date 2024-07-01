@@ -2,7 +2,7 @@ import React from "react";
 import ShowVideoList from "../ShowVideoList/ShowVideoList";
 
 const WHLVideoList = ({ page, videoList, currentUser }) => {
-  console.log(videoList);
+  // console.log(videoList);
   return (
     <>
       {currentUser ? (

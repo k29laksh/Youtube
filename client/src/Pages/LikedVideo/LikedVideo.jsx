@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 function LikedVideo() {
 
   const likedVideoList=useSelector(state=>state.likedVideoReducer)
-  console.log('likedvideodata', likedVideoList)
+  // console.log('likedvideodata', likedVideoList)
   const likedVideos = [
     {
       _id: 1,

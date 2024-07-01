@@ -7,9 +7,9 @@ function DescribeChanel({ setEditCreateChannelBtn, Cid ,setVideoUploadPage}) {
   // console.log("all channels:", channels);
   // console.log("current id:", Cid);
   const currentChannel = channels.filter((user) => user._id === Cid)[0];
-  console.log("current channel:", currentChannel);
+  // console.log("current channel:", currentChannel);
   const currentUser = useSelector((state) => state?.currentUserReducer);
-  console.log("current user:", currentUser);
+  // console.log("current user:", currentUser);
   // const currentChannel = {
   //   age: "2022-06-01T00:00:00.000Z",
   //   email: "zdeady",

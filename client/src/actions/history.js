@@ -11,7 +11,7 @@ export const addToHistory = (historyData) => async (dispatch) => {
   export const getAllHistory = () => async (dispatch) => {
     try {
       const { data } = await api.getAllHistory();
-      console.log("history data ",data)
+      // console.log("history data ",data)
       dispatch({ type: "GET_HISTORY", payload: data });
     //   return data;
     } catch (error) {

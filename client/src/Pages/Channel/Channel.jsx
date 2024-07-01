@@ -16,7 +16,7 @@ const Channel = ({setEditCreateChannelBtn,setVideoUploadPage}) => {
   const vids = useSelector((state) => state.videoReducer)
     ?.data?.filter((q) => q?.videoChanel === Cid)
     ?.reverse();
-    console.log("channel component id",Cid)
+    // console.log("channel component id",Cid)
   
   //   const vids = [
   //   {

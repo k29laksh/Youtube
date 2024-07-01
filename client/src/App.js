@@ -32,7 +32,7 @@ const App = () => {
   });
 
   const wdtToggle = () => {
-    console.log(LeftSidebarBtn);
+    // console.log(LeftSidebarBtn);
     if (LeftSidebarBtn.display === "none")
       setLeftSidebarBtn({
         display: "flex",

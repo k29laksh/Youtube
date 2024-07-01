@@ -16,9 +16,9 @@ import { gapi } from "gapi-script";
 const Navbar = ({ wdtToggle,setEditCreateChannelBtn }) => {
   const [AuthBtn, setAuthBtn] = useState(false);
 
-
+  
   const currentUser = useSelector((state) => state.currentUserReducer);
-  console.log(currentUser);
+  // console.log(currentUser);
 
 
   // const currentUser = {
