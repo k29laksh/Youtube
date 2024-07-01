@@ -1,10 +1,6 @@
 import React from "react";
-import { AiOutlineDelete } from "react-icons/ai";
 import LeftSidebar from "../../Components/LeftSidebar/LeftSidebar";
-import vid1 from "../../Components/Video/sample.mp4";
-import vid2 from "../../Components/Video/sample2.mp4";
-import vid3 from "../../Components/Video/sample3.mp4";
-import vid4 from "../../Components/Video/sample4.mp4";
+
 import ShowVideoGrid from "../../Components/ShowVideoGrid/ShowVideoGrid";
 import DescribeChannel from "./DescribeChannel";
 import { useParams } from "react-router-dom";

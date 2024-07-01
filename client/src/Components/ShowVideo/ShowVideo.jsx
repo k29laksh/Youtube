@@ -8,8 +8,8 @@ const ShowVideo = ({ vid }) => {
   const chanels = useSelector((state) => state?.currentUserProfileReducer);
   // console.log(vid);
 
-  const currentChanel = chanels?.filter((c) => c?._id === vid?.videoChanel)[0];
-  // console.log(vid.filePath);
+  // const currentChanel = chanels?.filter((c) => c?._id === vid?.videoChanel)[0];
+  // // console.log(vid.filePath);
   return (
     <>
       <Link to={`/videopage/${vid._id}`}>

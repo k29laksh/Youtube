@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import "./VideoPage.css";
-import vid1 from "../../Components/Video/sample3.mp4";
 import LikeWatchLaterSaveBtns from "./LikeWatchLaterSaveBtns";
 import Comments from "../../Components/Comments/Comments";
 import { Link, useParams } from "react-router-dom";

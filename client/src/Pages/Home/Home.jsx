@@ -1,9 +1,9 @@
 import React from "react";
 import "./home.css";
-import vid1 from "../../Components/Video/sample.mp4";
-import vid2 from "../../Components/Video/sample2.mp4";
-import vid3 from "../../Components/Video/sample3.mp4";
-import vid4 from "../../Components/Video/sample4.mp4";
+// import vid1 from "../../Components/Video/sample.mp4";
+// import vid2 from "../../Components/Video/sample2.mp4";
+// import vid3 from "../../Components/Video/sample3.mp4";
+// import vid4 from "../../Components/Video/sample4.mp4";
 import { useSelector } from "react-redux";
 import LeftSidebar from "../../Components/LeftSidebar/LeftSidebar";
 import ShowVideoGrid from "../../Components/ShowVideoGrid/ShowVideoGrid";

@@ -1,4 +1,4 @@
-import {combineReducers, conbineReducers} from "redux"
+import {combineReducers} from "redux"
 import authReducer from "./auth"
 import currentUserReducer from "./currentUser"
 import channelReducers from "./channel"

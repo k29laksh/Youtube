@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SearchList.css";
 import { IoSearchOutline } from "react-icons/io5";
 
