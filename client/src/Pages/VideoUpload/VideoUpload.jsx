@@ -38,7 +38,7 @@ const VideoUpload = ({setVideoUploadPage}) => {
           alert("Plese Enter a Title of Your Video");
         } else if (!videoFile) {
           alert("Plese Attach Your Video");
-        } else if (videoFile.size > 100000000) {
+        } else if (videoFile.size > 10000000) {
           alert("Plese Attach less than 1kb File");
         } else {
         //   setDisable(false);
