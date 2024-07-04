@@ -4,6 +4,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import WHLVideoList from "./WHLVideoList";
 import { useDispatch, useSelector } from "react-redux";
 import { clearHistory } from "../../actions/history";
+import WHLHistoryList from "./WHLHistoryList";
 
 const WHL = ({ page, videoList }) => {
   const currentUser = useSelector((state) => state.currentUserReducer);
@@ -31,7 +32,15 @@ const handleClearHistory=()=>{
         </div>
 
         <div className="Whl_list">
+         
+         {
+          page === "Watch history" ? 
+          <WHLHistoryList currentUser={currentUser?.result?._id} page={page} videoList={videoList} />
+          :
           <WHLVideoList currentUser={currentUser?.result?._id} page={page} videoList={videoList} />
+
+         }
+          
         </div>
       </div>
     </div>

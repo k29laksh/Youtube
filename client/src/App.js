@@ -5,7 +5,7 @@ import AllRoutes from "./Components/AllRoutes";
 import DrawerSidebar from "./Components/LeftSidebar/DrawerSidebar";
 import "./App.css";
 import CreateEditChannel from "./Pages/Channel/CreateEditChannel";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchAllChannel } from "./actions/channelUser";
 import VideoUpload from "./Pages/VideoUpload/VideoUpload";
 import { getVideos } from "./actions/video";
@@ -15,17 +15,19 @@ import { getAllHistory } from "./actions/history";
 import { getAllcomments } from "./actions/comments";
 const App = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.currentUserReducer);
 
   useEffect(() => {
     dispatch(fetchAllChannel());
     dispatch(getVideos());
     dispatch(getlikedVideo());
     dispatch(getwatchLater());
-    dispatch(getAllHistory());
-    dispatch(getAllcomments())
-    
+    dispatch(getAllcomments());
 
-  }, [dispatch]);
+    if (currentUser?.result?._id) {
+      dispatch(getAllHistory({ userId: currentUser.result._id }));
+    }
+  }, [dispatch, currentUser]);
 
   const [LeftSidebarBtn, setLeftSidebarBtn] = useState({
     display: "none",

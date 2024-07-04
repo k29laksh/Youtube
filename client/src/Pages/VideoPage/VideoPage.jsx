@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useRef, useEffect } from 'react';
 import "./VideoPage.css";
 import LikeWatchLaterSaveBtns from "./LikeWatchLaterSaveBtns";
 import Comments from "../../Components/Comments/Comments";
@@ -20,15 +20,16 @@ const VideoPage = () => {
   const handleHistory = () => {
     dispatch(
       addToHistory({
+        userId: currentUser?.result._id,
         videoId: vid,
-        Viewer: currentUser?.result._id,
       })
     );
   };
-
+ 
 const handleViews=()=>{
   dispatch(viewVideo({
-    id:vid
+    id:vid,
+    Viewer: currentUser?.result._id,
   }))
 }
 
@@ -40,6 +41,11 @@ const handleViews=()=>{
     handleViews()
   },[]);
 
+
+
+
+  
+
   // const channels = useSelector((state) => state?.channelReducers);
 
   // const currentChannel = channels.filter((user) => user._id === Cid)[0];
@@ -50,8 +56,8 @@ const handleViews=()=>{
         <div className="container2_videoPage">
           <div className="video_display_screen_videoPage">
             <video
-              // src={`http://localhost:5500/${vv?.filePath}`}
-              src={`https://youtube-clone-68it.onrender.com/${vv?.filePath}`}
+              src={`http://localhost:5500/${vv?.filePath}`}
+              // src={`https://youtube-clone-68it.onrender.com/${vv?.filePath}`}
 
               className={"video_ShowVideo_videoPage"}
               controls

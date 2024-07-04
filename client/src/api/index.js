@@ -1,6 +1,6 @@
 import axios from "axios";
-// const API = axios.create({ baseURL: `http://localhost:5500/` });
-const API = axios.create({ baseURL: `https://youtube-clone-68it.onrender.com/` });
+const API = axios.create({ baseURL: `http://localhost:5500/` });
+// const API = axios.create({ baseURL: `https://youtube-clone-68it.onrender.com/` });
 
 
 API.interceptors.request.use((req) => {
@@ -33,8 +33,8 @@ export const deletelikedVideo = (videoId, Viewer) => API.delete(`/video/deleteli
 
 // wawtchHistory
 
-export const addToHistory = (historyData) => API.post(`/video/history`, historyData)
-export const getAllHistory = () => API.get('/video/getHistory');
+export const addToHistory = ({userId, videoId}) => API.post(`/video/history`, {userId, videoId})
+export const getAllHistory = (userId) => API.get(`/video/getHistory/${userId}`);
 export const deleteHistory = (userId) => API.delete(`/video/clearhistory/${userId}`)
 
 // watchLater

@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Auth.css";
 import { setCurrentUser } from "../../actions/currentUser";
 import { Link } from "react-router-dom";
@@ -8,6 +8,8 @@ import { GoogleLogout } from "react-google-login";
 function Auth({ User, setAuthBtn, setEditCreateChannelBtn }) {
   // const user = null;
   const dispatch = useDispatch();
+  const watchHistoryList =useSelector(state=>state.historyReducer)
+
   // const User = {
   //   result: {
   //     age: "2022-06-01T00:00:00.000Z",
@@ -42,6 +44,9 @@ function Auth({ User, setAuthBtn, setEditCreateChannelBtn }) {
             </div>
             <div className="email_AUth">{User?.result.email}</div>
           </p>
+          <div className="user_points">
+            Your Points: {watchHistoryList?.data?.points}
+          </div>
           <div className="btns_auth">
             {User?.result.name ? (
               <Link to={`/channel/${User?.result?._id}`} className="btn_Auth">

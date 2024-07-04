@@ -1,25 +1,18 @@
-
-// import mongoose from "mongoose";
-
-// const userSchema = mongoose.Schema({
-//     name: { type: String, required: true },
-//     email: { type: String, required: true },
-//     password: { type: String, required: true },
-//     about: { type: String },
-//     tags: { type: [String] },
-//     jointime: { type: String, default: Date.now }
-// })
-
-// export default mongoose.model("User", userSchema)
-
-
 import mongoose from "mongoose";
 
-const userSchema = mongoose.Schema({
-    email: { type: String, required: true },
-    name: { type: String },
-    desc: { type: String },
-    joinedOn: { type: Date, default: Date.now }
-})
+const watchHistorySchema = mongoose.Schema({
+  video: { type: mongoose.Schema.Types.ObjectId, ref: "VideoDetails", required: true },
+  viewedOn: { type: Date, default: Date.now }
+});
 
-export default mongoose.model("User", userSchema)
+const userSchema = mongoose.Schema({
+  email: { type: String, required: true },
+  name: { type: String },
+  points: { type: Number, default: 0, min: 0 },
+  desc: { type: String },
+  joinedOn: { type: Date, default: Date.now },
+  watchHistory: [watchHistorySchema],
+  watchedVideos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }]  // Separate record for points
+});
+
+export default mongoose.model("User", userSchema);

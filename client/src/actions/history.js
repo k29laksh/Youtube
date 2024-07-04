@@ -1,31 +1,30 @@
-import * as api from "../api";
-export const addToHistory = (historyData) => async (dispatch) => {
-    try {
-      const { data } = await api.addToHistory(historyData);
-      dispatch({ type: "POST_HISTORY", data });
-      dispatch(getAllHistory());
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  export const getAllHistory = () => async (dispatch) => {
-    try {
-      const { data } = await api.getAllHistory();
-      // console.log("history data ",data)
-      dispatch({ type: "GET_HISTORY", payload: data });
-    //   return data;
-    } catch (error) {
-        console.log(error);
-    }
-  };
+import * as api from '../api';
 
-  export const clearHistory = (vid) => async (dispatch) => {
-    try {
-      const { userId} = vid;
-      // console.log(vid);
-      await api.deleteHistory(userId);
-      dispatch(getAllHistory());
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export const addToHistory = ({ userId, videoId }) => async (dispatch) => {
+  try {
+    const { data } = await api.addToHistory({ userId, videoId });
+    dispatch({ type: 'POST_HISTORY', data });
+    dispatch(getAllHistory({ userId }));
+  } catch (error) {
+    console.error('Error adding to history:', error.response ? error.response.data : error.message);
+  }
+};
+
+export const getAllHistory = ({ userId }) => async (dispatch) => {
+  try {
+    const { data } = await api.getAllHistory(userId);
+    console.log('history data', data);
+    dispatch({ type: 'GET_HISTORY', payload: data });
+  } catch (error) {
+    console.error('Error fetching history:', error.response ? error.response.data : error.message);
+  }
+};
+
+export const clearHistory = ({ userId }) => async (dispatch) => {
+  try {
+    await api.deleteHistory(userId);
+    dispatch(getAllHistory({ userId }));
+  } catch (error) {
+    console.error('Error clearing history:', error.response ? error.response.data : error.message);
+  }
+};

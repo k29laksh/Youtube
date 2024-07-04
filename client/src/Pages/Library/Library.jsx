@@ -11,6 +11,7 @@ import { MdOutlineWatchLater } from "react-icons/md";
 
 import "./Library.css";
 import { useSelector } from "react-redux";
+import WHLHistoryList from "../../Components/WHL/WHLHistoryList";
 function Library() {
   // const vids = [
   //   {
@@ -109,7 +110,7 @@ function Library() {
               <div className="library_name">History</div>
             </div>
             <div className="container_videoList_LibraryPage">
-              <WHLVideoList currentUser={currentUser?.result?._id} page="Watch History" videoList={watchHistoryList} />
+              <WHLHistoryList currentUser={currentUser?.result?._id} page="Watch History" videoList={watchHistoryList} />
             </div>
           </div>
           <div className="library_section">

@@ -17,10 +17,10 @@ import {
   } from "../controllers/watchLater.js";
 
   import {
-    historyController,
-    getHistory,
-    clearhistory,
-  } from "../controllers/history.js";
+    addToWatchHistory,
+    getWatchHistory,
+    clearWatchHistory,
+  } from "../controllers/authControllers.js";
 import auth from "../middlewares/auth.js";
 const router= express.Router()
 
@@ -40,8 +40,8 @@ router.delete("/deletewatchLater/:videoId/:Viewer", auth,deletewatchLater);
 
 // watch history
 
-router.post("/history", auth, historyController);
-router.get("/getHistory", getHistory);
-router.delete("/clearhistory/:userId",auth, clearhistory)
+router.post("/history", auth, addToWatchHistory);
+router.get("/getHistory/:userId", getWatchHistory);
+router.delete("/clearhistory/:userId",auth, clearWatchHistory)
 
 export default router;
