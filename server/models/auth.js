@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({
   desc: { type: String },
   joinedOn: { type: Date, default: Date.now },
   watchHistory: [watchHistorySchema],
-  watchedVideos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }]  // Separate record for points
+  watchedVideos: [{ type: mongoose.Schema.Types.ObjectId, ref: "VideoDetails" }]  // Separate record for points
 });
 
 export default mongoose.model("User", userSchema);

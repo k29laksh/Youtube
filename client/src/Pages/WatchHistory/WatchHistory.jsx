@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 
 function WatchHistory() {
   const watchHistoryList =useSelector(state=>state.historyReducer)
- console.log("watchhistory page", watchHistoryList)
+  console.log("watchhistory page", watchHistoryList)
   // const history = [
   //   {
   //     _id: 1,
@@ -91,8 +91,8 @@ function WatchHistory() {
   //   },
   // ];
   return (
-            <WHL page={"Watch history"} videoList={watchHistoryList} />
-    
+    <WHL page={"Watch history"} videoList={watchHistoryList} />
+
   );
 }
 
